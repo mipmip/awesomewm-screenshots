@@ -6,10 +6,11 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 
 - [x] light box
 - [x] pages
+- [x] design
+- [x] awesome branding
 - [ ] only MD images
 - [ ] keybindings instructions
 - [ ] at last page user right key to load next page
-- [ ] awesome branding
 - [ ] ignore none images files
   - [ ] fix gifv
   - [ ] improve detections
@@ -18,14 +19,13 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [ ] display stars etc...
 - [ ] display [n] comments with link to github
 - [ ] cache images
-- [ ] nice design
 - [ ] preload images
 - [ ] host on github
 - [ ] tell awesome wm community
+- [ ] credits
 - [ ] sorting stuff
   - [ ] newest
   - [ ] most stars
-
 -[ ] offline version github actions
   - [ ] offline json
   - [ ] generate thumbs
