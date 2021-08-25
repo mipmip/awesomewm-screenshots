@@ -2,6 +2,8 @@
 
 Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 
+[Visit the gallery](https://mipmip.github.io/awesomewm-screenshots/)
+
 ## TODO
 
 - [x] light box
@@ -30,6 +32,13 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
   - [ ] offline json
   - [ ] generate thumbs
 
+## Contributing:
+
+1. Fork it ( https://github.com/mipmip/awesomewm-screenshots/fork ).
+1. Create your feature branch (git checkout -b my-new-feature).
+1. Commit your changes (git commit -am 'Add some feature').
+1. Push to the branch (git push origin my-new-feature).
+1. Create a new pull request.
 
 ## Credits
 
