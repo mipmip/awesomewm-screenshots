@@ -10,6 +10,7 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [x] pages
 - [x] design
 - [x] awesome branding
+- [x] host on github
 - [ ] only MD images
 - [ ] keybindings instructions
 - [ ] at last page user right key to load next page
@@ -22,7 +23,6 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [ ] display [n] comments with link to github
 - [ ] cache images
 - [ ] preload images
-- [ ] host on github
 - [ ] tell awesome wm community
 - [ ] credits
 - [ ] sorting stuff
