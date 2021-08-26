@@ -9,7 +9,6 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Cache Images 🚀
       - run: npm install
       - run: npm run cache_images
       - run: npm run create_thumbs
