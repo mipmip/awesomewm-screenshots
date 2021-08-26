@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mipmip/awesomewm-screenshots#readme",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2"
   }
 }

@@ -66,12 +66,14 @@ function getCommentsPage(){
       var matches = comment.body.match(/\bhttps?::\/\/\S+/gi) || comment.body.match(/\bhttps?:\/\/\S+/gi);
       photoHTML += '';
 
-      $.each(matches,function(i,photo) {
-        photo = photo.replace(")", "")
-        if(checkvalidImg(photo)){
-          photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
-        }
-      });
+      if(matches){
+        $.each(matches,function(i,photo) {
+          photo = photo.replace(")", "")
+          if(checkvalidImg(photo)){
+            photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
+          }
+        });
+      }
 
       photoHTML += '';
     });
