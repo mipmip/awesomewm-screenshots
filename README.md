@@ -12,6 +12,8 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [x] awesome branding
 - [x] host on github
 - [x] keybindings instructions
+- [ ] cache images
+- [ ] preload images
 - [ ] only MD images
 - [ ] at last page user right key to load next page
 - [ ] ignore none images files
@@ -19,10 +21,6 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
   - [ ] improve detections
   - [ ] detect 404
 - [ ] render markdown without images
-- [ ] display stars etc...
-- [ ] display [n] comments with link to github
-- [ ] cache images
-- [ ] preload images
 - [ ] tell awesome wm community
 - [ ] credits
 - [ ] sorting stuff
@@ -41,6 +39,10 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 1. Create a new pull request.
 
 ## Credits
+
+This gallery was written with ❤️️ by Pim Snel https://pimsnel.com
+
+**AwesomeWM** Copyleft 2007-2021, AwesomeWM project 
 
 **The handwriting logo** font is partial and free for personal use.  Commercial
 licenses and complete set available @ billyargel.com More info contact:

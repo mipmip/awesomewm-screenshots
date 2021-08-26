@@ -75,7 +75,6 @@ function getCommentsPage(){
   $.getJSON("./cache_jsons/thumbs.json", function(){
   })
     .always(function(thumbs) {
-      alert(thumbs);
       var url = 'https://api.github.com/repos/awesomeWM/awesome/issues/1395/comments?per_page='+comments_per_page+'&page='+current_page;
       $.getJSON(url, function(data){
         $.each(data,function(i,comment) {
