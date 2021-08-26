@@ -7,8 +7,8 @@ let comments_per_page = 100
 
 var download = function(uri, filename, callback){
     request.head(uri, function(err, res, body){
-      console.log('content-type:', res.headers['content-type']);
       if(res && res.headers && res.headers['content-type'].substr(0, 5) === 'image'){
+        console.log('content-type:', res.headers['content-type']);
         request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       }
       //console.log('content-length:', res.headers['content-length']);
