@@ -1,0 +1,24 @@
+{
+  "name": "awesomewm-screenshots",
+  "version": "1.0.0",
+  "description": "Awesome WM Screenshot Gallery",
+  "scripts": {
+    "cache_images": "node ./cache.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mipmip/awesomewm-screenshots.git"
+  },
+  "keywords": [
+    "awesomewm"
+  ],
+  "author": "Pim Snel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mipmip/awesomewm-screenshots/issues"
+  },
+  "homepage": "https://github.com/mipmip/awesomewm-screenshots#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
