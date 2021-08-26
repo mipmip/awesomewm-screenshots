@@ -6,13 +6,18 @@ let urlissue = 'https://api.github.com/repos/awesomeWM/awesome/issues/1395';
 let comments_per_page = 100
 
 var download = function(uri, filename, callback){
+  try {
     request.head(uri, function(err, res, body){
       if(res && res.headers && res.headers['content-type'].substr(0, 5) === 'image'){
         console.log('content-type:', res.headers['content-type']);
-        request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+        extension = res.headers['content-type'].split('/').pop();
+        request(uri).pipe(fs.createWriteStream("./cache_images/"+encodeURIComponent(filename)+"."+extension)).on('close', callback);
       }
-      //console.log('content-length:', res.headers['content-length']);
     });
+  }
+  catch(err) {
+      console.log('some error at downloading');
+  }
 };
 
 
@@ -61,8 +66,9 @@ fetch(urlissue, { method: "Get" })
             if(matches){
               matches.forEach(function(imageUrl){
                 imageUrl = imageUrl.replace(")", "")
-                var extension = imageUrl.split('.').pop();
-                filename = "./cache_images/"+Buffer.from(imageUrl).toString('base64').replace(/\//g, 'ForwardSlash'); +"."+extension;
+                //var extension = imageUrl.split('.').pop();
+                filename = Buffer.from(imageUrl).toString('base64').replace(/\//g, 'ForwardSlash');
+                //+"."+extension;
                 download(imageUrl, filename, function(){console.log('download done')});
               })
             }

@@ -48,6 +48,19 @@ function getPages(){
 
 }
 
+function urlExists(url, callback){
+	$.ajax({
+		type: 'HEAD',
+		url: url,
+		success: function(){
+			callback(true);
+		},
+		error: function() {
+			callback(false);
+		}
+	});
+}
+
 function checkvalidImg(url){
 
   var ext = url.split('.').pop();
@@ -69,9 +82,22 @@ function getCommentsPage(){
       if(matches){
         $.each(matches,function(i,photo) {
           photo = photo.replace(")", "")
+
           if(checkvalidImg(photo)){
-            photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
+            var extension = photo.split('.').pop();
+            cache_url = "./thumb_images/"+btoa(photo).replace(/\//g, 'ForwardSlash').replace(/=/g, '') +"."+extension;
+            console.log(photo);
+            console.log(cache_url);
+            urlExists(cache_url, function(exists){
+              if(exists){
+                photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+cache_url+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +'(cache) </div>';
+              }
+              else{
+                photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
+              }
+            });
           }
+
         });
       }
 

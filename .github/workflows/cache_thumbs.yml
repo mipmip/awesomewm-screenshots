@@ -8,6 +8,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+
+      - name: Cache Images 🚀
       - run: npm install
       - run: npm run cache_images
+      - run: npm run create_thumbs
 
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: .
