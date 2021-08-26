@@ -21,7 +21,7 @@ var download = function(uri, filename, callback){
   }
 };
 
-rimraf.sync("/cache_images");
+rimraf.sync("./cache_images");
 fs.mkdir('./cache_images', (err) => {
   if (err) {
     console.log("error occurred in creating new directory", err);
