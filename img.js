@@ -53,6 +53,7 @@ function urlExists(url, callback){
 		type: 'HEAD',
 		url: url,
 		success: function(){
+      console.log("success??")
 			callback(true);
 		},
 		error: function() {
@@ -85,17 +86,21 @@ function getCommentsPage(){
 
           if(checkvalidImg(photo)){
             var extension = photo.split('.').pop();
-            cache_url = "./thumb_images/"+btoa(photo).replace(/\//g, 'ForwardSlash').replace(/=/g, '') +"."+extension;
+            cache_url = "./thumb_images/"+encodeURIComponent(btoa(photo).replace(/\//g, 'ForwardSlash').replace(/=/g, '') +"."+extension);
             console.log(photo);
             console.log(cache_url);
+
+            photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
+            /*
             urlExists(cache_url, function(exists){
-              if(exists){
+              if(exists===true){
                 photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+cache_url+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +'(cache) </div>';
               }
               else{
-                photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
+                console.log('hmmm');
               }
             });
+            */
           }
 
         });
