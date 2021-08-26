@@ -11,8 +11,8 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [x] design
 - [x] awesome branding
 - [x] host on github
+- [x] keybindings instructions
 - [ ] only MD images
-- [ ] keybindings instructions
 - [ ] at last page user right key to load next page
 - [ ] ignore none images files
   - [ ] fix gifv

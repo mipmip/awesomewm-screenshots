@@ -30,8 +30,6 @@ function getPages(){
       }
     }
 
-    console.log(pages);
-    console.log(current_page);
     if(current_page>=pages){
       pag += '<li class="page-item disabled">';
     }
@@ -49,17 +47,17 @@ function getPages(){
 }
 
 function urlExists(url, callback){
-	$.ajax({
-		type: 'HEAD',
-		url: url,
-		success: function(){
+  $.ajax({
+    type: 'HEAD',
+    url: url,
+    success: function(){
       console.log("success??")
-			callback(true);
-		},
-		error: function() {
-			callback(false);
-		}
-	});
+      callback(true);
+    },
+    error: function() {
+      callback(false);
+    }
+  });
 }
 
 function checkvalidImg(url){
@@ -73,53 +71,56 @@ function checkvalidImg(url){
 
 function getCommentsPage(){
   var photoHTML = "";
-  var url = 'https://api.github.com/repos/awesomeWM/awesome/issues/1395/comments?per_page='+comments_per_page+'&page='+current_page;
-  $.getJSON(url, function(data){
-    $.each(data,function(i,comment) {
 
-      var matches = comment.body.match(/\bhttps?::\/\/\S+/gi) || comment.body.match(/\bhttps?:\/\/\S+/gi);
-      photoHTML += '';
+  $.getJSON("./cache_jsons/thumbs.json", function(){
+  })
+    .always(function(thumbs) {
+      alert(thumbs);
+      var url = 'https://api.github.com/repos/awesomeWM/awesome/issues/1395/comments?per_page='+comments_per_page+'&page='+current_page;
+      $.getJSON(url, function(data){
+        $.each(data,function(i,comment) {
 
-      if(matches){
-        $.each(matches,function(i,photo) {
-          photo = photo.replace(")", "")
+          var matches = comment.body.match(/\bhttps?::\/\/\S+/gi) || comment.body.match(/\bhttps?:\/\/\S+/gi);
+          photoHTML += '';
 
-          if(checkvalidImg(photo)){
-            var extension = photo.split('.').pop();
-            cache_url = "./thumb_images/"+encodeURIComponent(btoa(photo).replace(/\//g, 'ForwardSlash').replace(/=/g, '') +"."+extension);
-            console.log(photo);
-            console.log(cache_url);
+          if(matches){
+            $.each(matches,function(i,photo) {
+              photo = photo.replace(")", "")
 
-            photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
-            /*
-            urlExists(cache_url, function(exists){
-              if(exists===true){
-                photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+cache_url+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +'(cache) </div>';
+              if(checkvalidImg(photo)){
+                var extension = photo.split('.').pop();
+                cache_file = "thumb_"+encodeURIComponent(btoa(photo)) +"."+extension;
+                console.log(cache_file);
+                if(thumbs.includes(cache_file)){
+                  photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="./thumb_images/'+cache_file+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +'(cache) </div>';
+                  console.log(photo);
+                }
+                else{
+                  photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
+                }
+
               }
-              else{
-                console.log('hmmm');
-              }
+
             });
-            */
           }
 
+          photoHTML += '';
         });
-      }
+        $('#photos').html(photoHTML);
+        $(".fancybox").fancybox({
+          openEffect: "none",
+          closeEffect: "none"
+        });
 
-      photoHTML += '';
-    });
-    $('#photos').html(photoHTML);
-    $(".fancybox").fancybox({
-      openEffect: "none",
-      closeEffect: "none"
+        $(".zoom").hover(function(){
+          $(this).addClass('transition');
+        }, function(){
+          $(this).removeClass('transition');
+        });
+      });
+
     });
 
-    $(".zoom").hover(function(){
-      $(this).addClass('transition');
-    }, function(){
-      $(this).removeClass('transition');
-    });
-  });
 }
 
 var current_page = 1;
@@ -136,5 +137,3 @@ $(document).ready(function() {
   getCommentsPage();
 
 });
-
-
