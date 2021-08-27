@@ -11,7 +11,7 @@ var download = function(uri, filename, callback){
   request.head(uri, function(err, res, body){
     if(res && res.headers && res.headers['content-type'].substr(0, 5) === 'image'){
       console.log('content-type:', res.headers['content-type']);
-      request(uri).pipe(fs.createWriteStream("./cache_images/"+filename))
+      request(uri).pipe(fs.createWriteStream("./build/cache_images/"+filename))
         .on('close', callback)
         .on('error', function(){
           console.log('error downloading:', uri);
@@ -26,8 +26,8 @@ var download = function(uri, filename, callback){
   });
 };
 
-rimraf.sync("./cache_images");
-fs.mkdir('./cache_images', (err) => {
+rimraf.sync("./build/cache_images");
+fs.mkdir('./build/cache_images', (err) => {
   if (err) {
     console.log("error occurred in creating new directory", err);
     return;
@@ -42,7 +42,7 @@ fetch(urlissue, { method: "Get" })
     const data = JSON.stringify(json);
 
     // write JSON string to a file
-    fs.writeFile('./cache_jsons/issue.json', data, (err) => {
+    fs.writeFile('./build/cache_jsons/issue.json', data, (err) => {
       if (err) {
         throw err;
       }
@@ -64,7 +64,7 @@ fetch(urlissue, { method: "Get" })
           const data2 = JSON.stringify(json2);
 
           // write JSON string to a file
-          fs.writeFile('./cache_jsons/comments_page_'+i+'.json', data2, (err) => {
+          fs.writeFile('./build/cache_jsons/comments_page_'+i+'.json', data2, (err) => {
             if (err) {
               throw err;
             }
