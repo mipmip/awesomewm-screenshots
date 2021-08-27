@@ -71,7 +71,10 @@ function checkvalidImg(url){
 
 function getCommentsPage(){
   var photoHTML = "";
-
+  const imgreg= /!\[(.*?)\]\((.*?)\)/gim
+  const regexMdImg = /!\[([^\[]+)\](\(.*\))/gm
+  //const regexMdLinks = /\[([^\[]+)\](\(.*\))/gm
+  const regexMdLinks = /(?:__|[*#])|\[(.*?)\]\((.*?)\)/gm
   $.getJSON("./cache_jsons/thumbs.json", function(){
   })
     .always(function(thumbs) {
@@ -79,25 +82,47 @@ function getCommentsPage(){
       $.getJSON(url, function(data){
         $.each(data,function(i,comment) {
 
-          var matches = comment.body.match(/\bhttps?::\/\/\S+/gi) || comment.body.match(/\bhttps?:\/\/\S+/gi);
+          var matches = comment.body.match(regexMdImg)
           photoHTML += '';
 
           if(matches){
+
             $.each(matches,function(i,photo) {
-              photo = photo.replace(")", "")
+
+              const singleMatch = /!\[([^\[]+)\]\((.*)\)/
+              var text = singleMatch.exec(photo)
+              photo = text[2];
 
               if(checkvalidImg(photo)){
                 cache_file = "thumb_"+encodeURIComponent(photo);
-                console.log(cache_file);
                 cache_file2 = encodeURIComponent(cache_file);
-                console.log(cache_file2);
+                var thumb_img = photo;
                 if(Array.isArray(thumbs) && thumbs.includes(cache_file)){
-                  photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="./thumb_images/'+cache_file2+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
-                  console.log(photo);
+                  thumb_img = `./thumb_images/${cache_file2}`;
                 }
-                else{
-                  //photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
-                }
+
+                var body = comment.body;
+                body = body.replace(imgreg,'');
+                body = body.replace(regexMdLinks, '<a href="$2">$1</a>');
+
+                photoHTML += `
+                  <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+
+                    <div class="card shadow mb-3" style="xwidth: 18rem;">
+                      <a href="${photo}" class="fancybox" rel="ligthbox" title="By ${comment.user.login}" >
+                      <img src="${thumb_img}" class="zoom img-fluid card-img-top"alt="">
+                      </a>
+
+                      <div class="card-body">
+                        <h5 class="card-title">By ${comment.user.login}</h5>
+                        <a href="${comment.html_url}" class="">see on github</a>
+                        <p class="card-text">${body}</p>
+                      </div>
+
+                    </div>
+
+                  </div>
+                    `;
 
               }
 
