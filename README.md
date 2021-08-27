@@ -13,8 +13,13 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [x] host on github
 - [x] keybindings instructions
 - [x] credits
+- [ ] improve design
+  - [ ] paddings
+  - [ ] log center
+  - [ ] improve responsive
 - [ ] only MD images
 - [ ] at last page user right key to load next page
+- [ ] display likes (emojis)
 - [ ] ignore none images files
   - [ ] fix gifv
   - [ ] improve detections
@@ -23,12 +28,11 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [ ] sorting stuff
   - [ ] newest
   - [ ] most stars
--[ ] offline version github actions
+-[x] offline version github actions
   - [x] offline json
   - [x] generate thumbs
-  - [ ] cache images
-  - [ ] preload images
-  - [ ] use cached content
+  - [x] cache images
+  - [x] use cached content
 
 ## Contributing:
 

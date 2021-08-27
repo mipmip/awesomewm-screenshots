@@ -18,7 +18,7 @@ var options = {
   overwrite: true,
   skip: false, // Skip generation of existing thumbnails
   ignore: true, // Ignore unsupported files in "dest"
-  source: './build/cache_images', // could be a filename: dest/path/image.jpg
+  source: './cache_images', // could be a filename: dest/path/image.jpg
   destination: './build/thumb_images'
 };
 

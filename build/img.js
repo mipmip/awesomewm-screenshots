@@ -92,7 +92,7 @@ function getCommentsPage(){
                 cache_file2 = encodeURIComponent(cache_file);
                 console.log(cache_file2);
                 if(Array.isArray(thumbs) && thumbs.includes(cache_file)){
-                  photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="./thumb_images/'+cache_file2+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +'(cache) </div>';
+                  photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="./thumb_images/'+cache_file2+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
                   console.log(photo);
                 }
                 else{

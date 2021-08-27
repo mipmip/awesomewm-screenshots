@@ -1,4 +1,4 @@
 node_modules
-build/cache_images
+cache_images
 build/thumb_images
 build/cache_jsons/*.json
