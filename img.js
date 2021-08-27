@@ -87,15 +87,16 @@ function getCommentsPage(){
               photo = photo.replace(")", "")
 
               if(checkvalidImg(photo)){
-                var extension = photo.split('.').pop();
-                cache_file = "thumb_"+encodeURIComponent(btoa(photo)) +"."+extension;
+                cache_file = "thumb_"+encodeURIComponent(photo);
                 console.log(cache_file);
+                cache_file2 = encodeURIComponent(cache_file);
+                console.log(cache_file2);
                 if(Array.isArray(thumbs) && thumbs.includes(cache_file)){
-                  photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="./thumb_images/'+cache_file+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +'(cache) </div>';
+                  photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="./thumb_images/'+cache_file2+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +'(cache) </div>';
                   console.log(photo);
                 }
                 else{
-                  photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
+                  //photoHTML += '<div class="col-lg-3 col-md-4 col-xs-6 thumb"> <a href="'+photo+'" class="fancybox" rel="ligthbox"> <img  src="'+photo+'" class="zoom img-fluid "  alt=""> </a> By '+ comment.user.login +' </div>';
                 }
 
               }
