@@ -25,6 +25,7 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [x] only MD images
 - [x] render markdown in card
 
+- [ ] bundle multiple images
 - [ ] trigger github actions on new comment in issue
 - [ ] at last page user right key to load next page
 - [ ] display likes (emojis)
