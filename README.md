@@ -13,26 +13,29 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 - [x] host on github
 - [x] keybindings instructions
 - [x] credits
-- [ ] improve design
-  - [ ] paddings
-  - [ ] log center
-  - [ ] improve responsive
-- [ ] only MD images
+- [x] offline version github actions
+  - [x] offline json
+  - [x] generate thumbs
+  - [x] cache images
+  - [x] use cached content
+- [x] improve design
+  - [x] paddings
+  - [x] logo center and responsive
+  - [x] improve responsive
+- [x] only MD images
+- [x] render markdown in card
+
+- [ ] trigger github actions on new comment in issue
 - [ ] at last page user right key to load next page
 - [ ] display likes (emojis)
 - [ ] ignore none images files
   - [ ] fix gifv
   - [ ] improve detections
   - [ ] detect 404
-- [ ] render markdown without images
 - [ ] sorting stuff
   - [ ] newest
   - [ ] most stars
--[x] offline version github actions
-  - [x] offline json
-  - [x] generate thumbs
-  - [x] cache images
-  - [x] use cached content
+- [ ] use offline json option to prevent api rate limits
 
 ## Contributing:
 
