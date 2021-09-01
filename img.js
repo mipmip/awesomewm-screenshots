@@ -1,6 +1,10 @@
+const useCacheJson = false;
 
 function getPages(){
   var url = 'https://api.github.com/repos/awesomeWM/awesome/issues/1395';
+  if(useCacheJson){
+    url = './cache_jsons/issue.json';
+  }
   var pag = '';
 
   $.getJSON(url, function(data){
@@ -78,7 +82,12 @@ function getCommentsPage(){
   $.getJSON("./cache_jsons/thumbs.json", function(){
   })
     .always(function(thumbs) {
+
       var url = 'https://api.github.com/repos/awesomeWM/awesome/issues/1395/comments?per_page='+comments_per_page+'&page='+current_page;
+      if(useCacheJson){
+        url = `./cache_jsons/comments_page_${current_page}.json`;
+      }
+
       $.getJSON(url, function(data){
         $.each(data,function(i,comment) {
 
@@ -109,7 +118,10 @@ function getCommentsPage(){
                   <div class="col-lg-3 col-md-4 col-xs-6 thumb">
 
                     <div class="card shadow mb-3" style="xwidth: 18rem;">
-                      <a href="${photo}" class="fancybox" rel="ligthbox" title="By ${comment.user.login}" >
+                      <a href="${photo}" class="fancybox"
+                      data-fancybox="gallery"
+
+                      rel="ligthbox" title="By ${comment.user.login}" >
                       <img src="${thumb_img}" class="zoom img-fluid card-img-top"alt="">
                       </a>
 
@@ -132,20 +144,21 @@ function getCommentsPage(){
           photoHTML += '';
         });
         $('#photos').html(photoHTML);
-        $(".fancybox").fancybox({
-          openEffect: "none",
-          closeEffect: "none"
-        });
 
-        $(".zoom").hover(function(){
-          $(this).addClass('transition');
-        }, function(){
-          $(this).removeClass('transition');
+        Fancybox.bind('[data-fancybox="gallery"]', {
+          Toolbar: {
+            display: [
+              { id: "prev", position: "center" },
+              { id: "counter", position: "center" },
+              { id: "next", position: "center" },
+              "zoom",
+              "fullscreen",
+              "close",
+            ],
+          },
         });
       });
-
     });
-
 }
 
 var current_page = 1;
