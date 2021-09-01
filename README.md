@@ -4,9 +4,24 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
 
 [Visit the gallery](https://mipmip.github.io/awesomewm-screenshots/)
 
-## TODO
+## ASG Todo Next version
+- [ ] bundle multiple images in comment
+- [ ] trigger github actions on new comment in issue
+- [ ] show my liked screenshots
+- [ ] at last page user right key to load next page
+- [ ] display likes (emojis)
+- [ ] click to add like
+- [ ] sorting stuff
+  - [ ] newest
+  - [ ] most stars
+- [ ] use offline json option to prevent api rate limits
+- [ ] cleanup html, less loading
 
-- [x] light box
+## ASG v1.1
+- [x] switched to fancybox 4 includes zoom
+
+## ASG v1.0
+- [x] fancybox v2.0
 - [x] pages
 - [x] design
 - [x] awesome branding
@@ -24,19 +39,10 @@ Gallery is build from https://github.com/awesomeWM/awesome/issues/1395
   - [x] improve responsive
 - [x] only MD images
 - [x] render markdown in card
-
-- [ ] bundle multiple images
-- [ ] trigger github actions on new comment in issue
-- [ ] at last page user right key to load next page
-- [ ] display likes (emojis)
-- [ ] ignore none images files
-  - [ ] fix gifv
-  - [ ] improve detections
-  - [ ] detect 404
-- [ ] sorting stuff
-  - [ ] newest
-  - [ ] most stars
-- [ ] use offline json option to prevent api rate limits
+- [x] ignore none images files
+  - [x] fix gifv
+  - [x] improve detections
+  - [x] detect 404
 
 ## Contributing:
 
